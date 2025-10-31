@@ -13,3 +13,5 @@ Sistema de catalógo de filmes utilizando CRUD com Class Based Views
 | `/deletar/<id>/` | Excluir filme |
 
 ## Telas
+- Listagem 
+![Listagem](https://raw.githubusercontent.com/ruanhs91/atividade_crud_cbv/refs/heads/main/Captura%20de%20tela%202025-10-30%20215316.png)
