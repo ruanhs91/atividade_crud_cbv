@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}{{ filme.titulo }}{% endblock %}
+{% block content %}
+
+<div class="container py-4 d-flex justify-content-center">
+  <div class="card shadow-lg border-0 rounded-4 overflow-hidden" style="max-width: 700px;">
+    
+    {% if filme.poster %}
+      <img src="{{ filme.poster.url }}" 
+           alt="{{ filme.titulo }}" 
+           class="mx-auto d-block"
+           style="width: 100%; height: 1050px; object-fit: cover; object-position: center;">
+    {% else %}
+      <div class="bg-dark text-white d-flex align-items-center justify-content-center" style="height: 1050px;">
+        <i class="bi bi-film" style="font-size: 3rem;"></i>
+      </div>
+    {% endif %}
+    
+    <div class="card-body p-4">
+      <h2 class="fw-bold mb-3 text-center">{{ filme.titulo }}</h2>
+
+      <ul class="list-unstyled text-muted mb-4">
+        <li><i class="bi bi-person-video2"></i> <strong>Diretor:</strong> {{ filme.diretor }}</li>
+        <li><i class="bi bi-film"></i> <strong>Gênero:</strong> {{ filme.genero }}</li>
+        <li><i class="bi bi-calendar-event"></i> <strong>Ano:</strong> {{ filme.ano_lancamento }}</li>
+        <li><i class="bi bi-clock"></i> <strong>Duração:</strong> {{ filme.duracao }} min</li>
+      </ul>
+
+      {% if filme.sinopse %}
+        <p class="border-top pt-3"><i class="bi bi-card-text"></i> {{ filme.sinopse }}</p>
+      {% endif %}
+
+      <div class="d-flex justify-content-between mt-4">
+        <a href="{% url 'filmes:editar' filme.pk %}" class="btn btn-warning rounded-pill">
+          <i class="bi bi-pencil-square"></i> Editar
+        </a>
+        <a href="{% url 'filmes:deletar' filme.pk %}" class="btn btn-danger rounded-pill">
+          <i class="bi bi-trash3"></i> Excluir
+        </a>
+        <a href="{% url 'filmes:listar' %}" class="btn btn-secondary rounded-pill">
+          <i class="bi bi-arrow-left"></i> Voltar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
